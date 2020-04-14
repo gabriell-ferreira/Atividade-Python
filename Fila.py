@@ -2,6 +2,12 @@ class Node:
   def __init__(self, data):
     self.data = data
     self.next = None
+  
+  def getData(self):
+    return self.data
+
+  def setData(self, data):
+    self.data = data
 
 class Queue:
   # TODO: inicializar fila
@@ -11,8 +17,11 @@ class Queue:
     self._size = 0
 
   # TODO: adicionar elemento na fila
-  def push(self, elemento):
-    node = Node(elemento) # ? colocar o elemento em um nó
+  def push(self, data):
+    node = Node(data) # ? colocar o elemento em um nó
+    
+    if self.first is None: # ? verificar se a fila possui um primeiro elemento
+      self.first = node
 
     if self.last is None: # ? verificar se a fila tem um último elemento
       self.last = node
@@ -20,19 +29,17 @@ class Queue:
       self.last.next = node
       self.last = node
 
-    if self.first is None: # ? verificar se a fila possui um primeiro elemento
-      self.first = node
     
     self._size = self._size + 1
 
   # TODO: remover elemento da fila
   def pop(self):
     if self._size > 0: # ? checar se a fila está vazia
-      elemento = self.first.data
+      data = self.first.data
       self.first = self.first.next
       self._size = self._size - 1
       
-      return elemento
+      return data
     else:
       print('A fila está vazia.')
 
@@ -40,9 +47,9 @@ class Queue:
   # TODO: mostrar elementos da fila
   def show(self):
     if self._size > 0: # ? checar se a fila está vazia
-      elemento = self.first.data
+      data = self.first.data
       
-      return elemento
+      return data
     else:
       print('A fila está vazia.')
 
@@ -82,11 +89,8 @@ class Queue:
       elif opcao == '1':
         print(35*'-')
 
-        print('Adicionando elemento.')
-        fila.push(3)
-        fila.push(4)
-        fila.push(5)
-        fila.push(6)
+        dado = input('insira um valor: ')
+        fila.push(dado)
 
       elif opcao == '2':
         print(35*'-')

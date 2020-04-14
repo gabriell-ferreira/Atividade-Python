@@ -3,7 +3,15 @@ class Node:
     self.data = data
     self.next = None
 
+  def getData(self):
+    return self.data
+
+  def setData(self, data):
+    self.data = data
+
+
 class Stack:
+
   def __init__(self):
     self.last = None
     self._size = 0
@@ -22,8 +30,8 @@ class Stack:
     return r
   
   # ! inserir na pilha
-  def push(self, element):
-    node = Node(element) # envolver o elemento em um nó
+  def push(self, data):
+    node = Node(data) # envolver o elemento em um nó
 
     node.next = self.last # antigo elemento no topo da lista
     self.last = node # adicionar o novo elemento ao topo
@@ -66,11 +74,8 @@ class Stack:
       elif opcao == '1':
         print(35*'-')
 
-        print('Adicionando elemento.')
-        pilha.push(3)
-        pilha.push(4)
-        pilha.push(5)
-        pilha.push(6)
+        dado = input('Insira um valor: ')
+        pilha.push(dado)
 
       elif opcao == '2':
         print(35*'-')
